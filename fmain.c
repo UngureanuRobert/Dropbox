@@ -7,6 +7,7 @@
 #include "cp.h"
 #include "du.h"
 #include "ls.h"
+#include "mv.h"
 #include "rm.h"
 
 void comenzi(){
@@ -14,7 +15,7 @@ void comenzi(){
 	printf("cp\n");
 	printf("du\n");
 	printf("ls\n");
-	
+	printf("mv\n");
 	printf("rm\n");
 	printf("iesire\n");
 }
@@ -73,6 +74,15 @@ int main()
 		  closedir(director);
 		  
 		  ls(parametru1);
+		}
+		else if (strcmp(command, "mv") == 0){
+			printf("Introduceti fisierul sursa: ");
+			scanf("%s", parametru1);
+			
+			printf("Introduceti destinatia: ");
+			scanf("%s", parametru2);
+			
+			mv(parametru1, parametru2);
 		}
 		else if (strcmp(command, "rm") == 0)
 		{
