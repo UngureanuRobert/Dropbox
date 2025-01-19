@@ -1,16 +1,21 @@
+#define _XOPEN_SOURCE 500
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <dirent.h>
+#include <ftw.h>
 #include "cp.h"
 #include "du.h"
 #include "ls.h"
+#include "rm.h"
 
 void comenzi(){
 	printf("\nComenzi valabile:\n");
 	printf("cp\n");
 	printf("du\n");
 	printf("ls\n");
+	
+	printf("rm\n");
 	printf("iesire\n");
 }
 
@@ -68,6 +73,12 @@ int main()
 		  closedir(director);
 		  
 		  ls(parametru1);
+		}
+		else if (strcmp(command, "rm") == 0)
+		{
+		  printf("introduceti path-ul obiectului: ");
+		  scanf("%s", parametru1);
+		  rm(parametru1);
 		}
 		else if (strcmp(command, "iesire") == 0){
 			printf("Parasire shell\n");
