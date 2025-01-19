@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <dirent.h>
 #include "cp.h"
+#include "du.h"
+#include "ls.h"
 
 void comenzi(){
 	printf("\nComenzi valabile:\n");
 	printf("cp\n");
-	
+	printf("du\n");
+	printf("ls\n");
 	printf("iesire\n");
 }
 
@@ -39,6 +43,32 @@ int main()
 			
 			cp(parametru1, parametru2);
 		}
+		else if (strcmp(command, "du") == 0){
+			printf("introduceti directorul: ");
+			scanf("%s", parametru1);
+			DIR *director = opendir(parametru1);
+			if (director == NULL){
+				printf("Nu se poate deschide directorul dat!\n");
+				continue;
+			}
+			closedir(director);
+			
+			du(parametru1);
+		}
+		else if (strcmp(command, "ls") == 0)
+		{
+		  printf("introduceti directorul: ");
+		  scanf("%s", parametru1);
+		  DIR *director = opendir(parametru1);
+		  if (director == NULL)
+		  {
+		    printf("Nu se poate deschide directorul dat!\n");
+		    continue;
+		  }
+		  closedir(director);
+		  
+		  ls(parametru1);
+		}
 		else if (strcmp(command, "iesire") == 0){
 			printf("Parasire shell\n");
 		}
@@ -46,7 +76,7 @@ int main()
 			printf("Comanda invalida! Incercati din nou!\n");
 		}
 	}
-	while (strcmp(command, "iesire") != 0);
+	while (strcmp(command, "iesire") != 0); 
 	
 	return 0;
 }
