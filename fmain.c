@@ -9,6 +9,7 @@
 #include "ls.h"
 #include "mv.h"
 #include "rm.h"
+#include "mkdir.h"
 
 void comenzi(){
 	printf("\nComenzi valabile:\n");
@@ -17,6 +18,7 @@ void comenzi(){
 	printf("ls\n");
 	printf("mv\n");
 	printf("rm\n");
+	printf("mkdr\n");
 	printf("iesire\n");
 }
 
@@ -89,6 +91,12 @@ int main()
 		  printf("introduceti path-ul obiectului: ");
 		  scanf("%s", parametru1);
 		  rm(parametru1);
+		}
+		else if (strcmp(command, "mkdr") == 0)
+		{
+		  printf("introduceti path-ul directorului: ");
+		  scanf("%s", parametru1);
+		  mkdr(parametru1);
 		}
 		else if (strcmp(command, "iesire") == 0){
 			printf("Parasire shell\n");
